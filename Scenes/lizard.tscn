@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://8hq1crrw5lxn"]
+
+[ext_resource type="Texture2D" uid="uid://b7q68yakixx8s" path="res://Assets/lizard-move.png" id="1_f62ph"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p208l"]
+atlas = ExtResource("1_f62ph")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cuow3"]
+atlas = ExtResource("1_f62ph")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bfwcd"]
+atlas = ExtResource("1_f62ph")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ya6vh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p208l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cuow3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bfwcd")
+}],
+"loop": true,
+"name": &"Walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ym1jx"]
+radius = 8.0
+height = 26.0
+
+[node name="Lizard" type="CharacterBody2D"]
+scale = Vector2(0.6, 0.6)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ya6vh")
+animation = &"Walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("CapsuleShape2D_ym1jx")
